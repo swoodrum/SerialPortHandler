@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.lib.jpa2.MYECLIPSE_ECLIPSELINK21"/>
+	<classpathentry kind="con" path="melibrary.com.skyway.myeclipseforspring.lib.logging.Logging_1_6"/>
+	<classpathentry kind="lib" path="lib/swing-layout-1.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/AbsoluteLayout.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scott&apos;s Dell i5/Downloads/akka-2.1.0/lib/scala-library.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scott&apos;s Dell i5/Downloads/akka-2.1.0/lib/akka/akka-actor_2.10-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/rxtx/RXTXcomm.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/rxtx"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Scott&apos;s Dell i5/Downloads/akka-2.1.0/lib/akka/config-1.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Scott&apos;s Dell i5/Downloads/guava-14.0-rc1.jar" sourcepath="C:/Users/Scott&apos;s Dell i5/.m2/repository/com/google/guava/guava/14.0-rc1/guava-14.0-rc1-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
