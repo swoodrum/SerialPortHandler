@@ -32,8 +32,8 @@ public class SerialPortBroker extends UntypedActor implements
 			inputStream = serialPort.getInputStream();
 			serialPort.addEventListener(this);
 			serialPort.notifyOnDataAvailable(true);
-			getContext().actorFor("akka://MyActors/user/receiver").tell(
-					"serialport up", getSelf());
+			//getContext().actorFor("akka://MyActors/user/receiver").tell(
+					//"serialport up", getSelf());
 		} catch (Exception e1) {
 			getLogger().fatal(e1);
 			e1.printStackTrace();
@@ -54,8 +54,8 @@ public class SerialPortBroker extends UntypedActor implements
 	public void postStop() {
 		serialPort.close();
 		getLogger().debug("Serial port closed from Akka...");
-		getContext().actorFor("akka://MyActors/user/receiver").tell(
-				"serialport down", getSelf());
+		//getContext().actorFor("akka://MyActors/user/receiver").tell(
+				//"serialport down", getSelf());
 	}
 
 	@Override

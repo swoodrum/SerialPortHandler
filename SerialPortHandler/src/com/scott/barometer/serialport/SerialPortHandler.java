@@ -42,6 +42,7 @@ public class SerialPortHandler extends javax.swing.JFrame {
 	private static ActorSystem actorSystem;
 	private static ItemListener serialPortItemHandler;
 	private static ActorRef messageReceiver;
+	private static EntityManager em;
 
 	/**
 	 * 
@@ -78,9 +79,11 @@ public class SerialPortHandler extends javax.swing.JFrame {
 				}), "receiver");
 		getLogger().debug(
 				">>> Created message receiver: " + messageReceiver.path());
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("SerialPortHandler");
-		System.out.println(emf);
-		EntityManager em = emf.createEntityManager();
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("SerialPortHandler");
+		getLogger().debug(emf);
+		em = emf.createEntityManager();
+		getLogger().debug("Created entity manager: " + em);
 	}
 
 	// GEN-BEGIN:initComponents
@@ -188,6 +191,24 @@ public class SerialPortHandler extends javax.swing.JFrame {
 			}
 		});
 	}
+	
+	
+	private static void persistTheData(String theData) {
+		int theValue;
+		try {
+			em.getTransaction().begin();
+			Integer i = new Integer(theData);
+			theValue = i.intValue();
+			BarometerData b = new BarometerData();
+			b.setPaPressure(theValue);
+			em.persist(b);
+			em.getTransaction().commit();
+			getLogger().debug("Persisted new data...");
+		} catch (Exception e) {
+			getLogger().warn(e);
+			em.getTransaction().rollback();
+		}
+	}
 
 	private static Logger getLogger() {
 		return Logger.getLogger(SerialPortHandler.class);
@@ -226,6 +247,8 @@ public class SerialPortHandler extends javax.swing.JFrame {
 		@Override
 		public void onReceive(Object message) throws Exception {
 			log.debug(message.toString());
+			String msg = message.toString();
+			persistTheData(msg);
 		}
 
 	}
