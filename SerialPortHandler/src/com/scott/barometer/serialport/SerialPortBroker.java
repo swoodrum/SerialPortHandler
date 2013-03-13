@@ -67,10 +67,19 @@ public class SerialPortBroker extends UntypedActor implements
 			while ((data = inputStream.read()) > -1) {
 				if (data == '\n') {
 					break;
+				} else if (data == '*') {
+					break;
 				}
 				buffer[len++] = (byte) data;
 			}
-			getLogger().debug(new String(buffer, 0, len));
+			String theData = new String(buffer, 0, len);
+			getLogger().debug(theData);
+
+			if (theData.startsWith("9") || theData.startsWith("1")) {
+				getContext().actorFor("akka://MyActors/user/receiver").tell(
+						theData, getSelf());
+			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			getLogger().debug(e);

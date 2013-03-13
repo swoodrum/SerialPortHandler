@@ -12,6 +12,9 @@ import java.awt.event.ItemListener;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -75,6 +78,9 @@ public class SerialPortHandler extends javax.swing.JFrame {
 				}), "receiver");
 		getLogger().debug(
 				">>> Created message receiver: " + messageReceiver.path());
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("SerialPortHandler");
+		System.out.println(emf);
+		EntityManager em = emf.createEntityManager();
 	}
 
 	// GEN-BEGIN:initComponents
